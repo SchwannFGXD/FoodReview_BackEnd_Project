@@ -1,6 +1,7 @@
 package services;
 
 
+import model.FoodPlace;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,13 +24,18 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public User addUser(User user){
+    public void addUser(User user){
         userRepository.save(user);
-        return user;
     }
 
     public void removeUserByID(Long id){
         userRepository.deleteById(id);
+    }
+
+    public void updateUser(User user, Long id){
+        User  userToUpdate = userRepository.findById(id).get();
+        userToUpdate.setName(user.getName());
+        userRepository.save(userToUpdate);
     }
 
 }

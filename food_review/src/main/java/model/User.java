@@ -20,7 +20,7 @@ public class User {
     @JsonIgnoreProperties({"users"})
     private List<Review> reviews;
 
-    public User(String name, List<Review> reviews){
+    public User(String name){
         this.name = name;
         this.reviews = new ArrayList<>();
     }

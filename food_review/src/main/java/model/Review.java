@@ -25,6 +25,10 @@ public class Review {
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties({"reviews"})
     private User user;
+    @ManyToOne
+    @JoinColumn(name = "food_place_id")
+    @JsonIgnoreProperties({"reviews"})
+    private FoodPlace foodPlace;
 
     public Review(double rating, String reviewText, LocalDate date){
         this.rating = rating;

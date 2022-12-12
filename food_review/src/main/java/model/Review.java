@@ -1,9 +1,11 @@
 package model;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
 
-@Entity(name="review")
+@Entity(name="reviews")
 public class Review {
 
     @Id
@@ -18,6 +20,11 @@ public class Review {
 
     @Column(name ="date")
     private LocalDate date;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"reviews"})
+    private User user;
 
     public Review(double rating, String reviewText, LocalDate date){
         this.rating = rating;

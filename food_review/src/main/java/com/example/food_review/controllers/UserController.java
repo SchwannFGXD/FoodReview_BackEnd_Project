@@ -1,5 +1,7 @@
 package com.example.food_review.controllers;
 
+import com.example.food_review.model.FoodPlace;
+import com.example.food_review.model.Review;
 import com.example.food_review.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +33,14 @@ public class UserController {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
 
+    }
+
+
+    @GetMapping(value = "/{id}/reviews")
+    public ResponseEntity<List<Review>> getAllReviewsFromUserById(@PathVariable long id) {
+        Optional <User> user = userService.getUserById(id);
+        List<Review> reviews = user.get().getReviews();
+        return new ResponseEntity<>(reviews, HttpStatus.OK);
     }
 
     @PostMapping

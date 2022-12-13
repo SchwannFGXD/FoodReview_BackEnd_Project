@@ -11,7 +11,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -24,9 +24,6 @@ public class User {
         this.name = name;
         this.reviews = new ArrayList<>();
     }
-    public void addReview(Review review){
-        this.reviews.add(review);
-    }
 
     public void removeReview(Review review){
         this.reviews.remove(review);
@@ -34,11 +31,11 @@ public class User {
 
     public User(){}
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

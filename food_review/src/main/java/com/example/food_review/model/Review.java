@@ -10,7 +10,7 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name ="rating")
     private double rating;
@@ -25,15 +25,18 @@ public class Review {
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties({"reviews"})
     private User user;
+
     @ManyToOne
     @JoinColumn(name = "food_place_id")
     @JsonIgnoreProperties({"reviews"})
     private FoodPlace foodPlace;
 
-    public Review(double rating, String reviewText, LocalDate date){
+    public Review(double rating, String reviewText, LocalDate date, FoodPlace foodPlace, User user){
         this.rating = rating;
         this.reviewText = reviewText;
         this.date = date;
+        this.foodPlace = foodPlace;
+        this.user = user;
     }
 
     public Review(){
@@ -63,10 +66,10 @@ public class Review {
         this.date = date;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

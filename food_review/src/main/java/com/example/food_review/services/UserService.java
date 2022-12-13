@@ -1,6 +1,7 @@
 package com.example.food_review.services;
 
 
+import com.example.food_review.model.Review;
 import com.example.food_review.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,11 @@ public class UserService {
     }
 
     public void addUser(User user){
+        userRepository.save(user);
+    }
+
+    public void addReview(Review review, User user){
+        user.getReviews().add(review);
         userRepository.save(user);
     }
 

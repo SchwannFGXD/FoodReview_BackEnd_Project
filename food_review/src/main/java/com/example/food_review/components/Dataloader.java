@@ -77,55 +77,56 @@ public class Dataloader implements ApplicationRunner {
 
 //
         Review review1 = new Review(3, "The food was decent.", LocalDate.of(2022,10,06), skewers_beers, Emma);
-//        Review review2 = new Review(4.5, "The food was amazing.",LocalDate.of(2022,10, 12));
-//        Review review3 = new Review(1, "The establishment had rats falling from the ceiling.",LocalDate.of(2022,10,30));
-//        Review review4 = new Review(4, "Lost for words.",LocalDate.of(2022, 11, 01));
-//        Review review5 = new Review(5, "Stunned.",LocalDate.of(2022,11,06));
-//        Review review6 = new Review(2, "The noodles looked questionable.",LocalDate.of(2022,11,25));
-//        Review review7 = new Review(3.5, "Rude staff, I was ignored by the waiter.",LocalDate.of(2022,11,30));
-//        Review review8 = new Review(5, "The meal was exquisite.",LocalDate.of(2022,12,01));
-//        Review review9 = new Review(1.5, "My Chicken nugget looked like a cockroach.",LocalDate.of(2022,11,05));
-//        Review review10 = new Review(4.5, "The food was rich in umami.",LocalDate.of(2022,11,25));
+      Review review2 = new Review(4.5, "The food was amazing.",LocalDate.of(2022,10, 12), chinChinLab, Shawn);
+        Review review3 = new Review(1, "The establishment had rats falling from the ceiling.",LocalDate.of(2022,10,30),amigos, Salma);
+        Review review4 = new Review(4, "Lost for words.",LocalDate.of(2022, 11, 01), silkRoad, Georgia);
+        Review review5 = new Review(5, "Stunned.",LocalDate.of(2022,11,06), silkRoad, Zsolt);
+       Review review6 = new Review(2, "The noodles looked questionable.",LocalDate.of(2022,11,25),skewers_beers, Anna);
+       Review review7 = new Review(3.5, "Rude staff, I was ignored by the waiter.",LocalDate.of(2022,11,30), skewers_beers, Jenna);
+        Review review8 = new Review(5, "The meal was exquisite.",LocalDate.of(2022,12,01), skewers_beers, Emma);
+       Review review9 = new Review(1.5, "My Chicken nugget looked like a cockroach.",LocalDate.of(2022,11,05), amigos, Emma);
+        Review review10 = new Review(4.5, "The food was rich in umami.",LocalDate.of(2022,11,25), tsujiri, Salma);
 
 //        reviewRepository.saveAll(List.of(review1, review2, review3, review4, review5, review6, review7, review8, review9, review10));
         review1 = reviewRepository.save(review1);
 //        userService.addReview(review1, Emma);
-//        review8 = reviewRepository.save(review8);
+        review8 = reviewRepository.save(review8);
 //        userService.addReview(review8, Emma);
-//        review9 = reviewRepository.save(review9);
+        review9 = reviewRepository.save(review9);
 //        userService.addReview(review9, Emma);
 //
 //
-//        review2 = reviewRepository.save(review2);
+        review2 = reviewRepository.save(review2);
 //        userService.addReview(review2, Shawn);
 //
-//        review3 = reviewRepository.save(review3);
+        review3 = reviewRepository.save(review3);
 //        userService.addReview(review3, Salma);
-//        review10 = reviewRepository.save(review10);
+        review10 = reviewRepository.save(review10);
 //        userService.addReview(review10, Salma);
 //
-//        review4 = reviewRepository.save(review4);
+        review4 = reviewRepository.save(review4);
 //        userService.addReview(review4, Georgia);
-//        review5 = reviewRepository.save(review5);
+        review5 = reviewRepository.save(review5);
 //        userService.addReview(review5, Zsolt);
-//        review6 = reviewRepository.save(review6);
+       review6 = reviewRepository.save(review6);
 //        userService.addReview(review6, Anna);
-//        review7 = reviewRepository.save(review7);
+        review7 = reviewRepository.save(review7);
 //        userService.addReview(review7, Jenna);
 //
 //
 //
-//        skewers_beers.addReview(review7);
-//        skewers_beers.addReview(review1);
-//        skewers_beers.addReview(review6);
+  //      skewers_beers.addReview(review7);
+
+  //     skewers_beers.addReview(review1);
+  //     skewers_beers.addReview(review6);
 //        skewers_beers.addReview(review8);
 //
-//        chinChinLab.addReview(review2);
+    //    chinChinLab.addReview(review2);
 //
 //        silkRoad.addReview(review4);
 //        silkRoad.addReview(review5);
 //
-//        amigos.addReview(review3);
+  //      amigos.addReview(review3);
 //        amigos.addReview(review9);
 //
 //        tsujiri.addReview(review10);

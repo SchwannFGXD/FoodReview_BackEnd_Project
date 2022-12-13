@@ -1,6 +1,7 @@
 package com.example.food_review.components;
 
 import com.example.food_review.model.FoodPlace;
+import com.example.food_review.model.User;
 import com.example.food_review.services.FoodPlaceService;
 import com.example.food_review.services.ReviewService;
 import com.example.food_review.services.UserService;
@@ -41,6 +42,22 @@ public class Dataloader implements ApplicationRunner {
 
         FoodPlace tsujiri = new FoodPlace("Tsujiri", "Japanese",
                 "10:00 - 22:00", "www.tsujiri_london.com");
+
+        User Emma = new User("Emma");
+        User Shawn = new User("Shawn");
+        User Georgia = new User("Georgia");
+        User Salma = new User("Salma");
+        User Anna = new User("Anna");
+        User Jenna = new User("Jenna");
+        User Zsolt = new User("Zsolt");
+        User Colin = new User("Colin");
+        User Richard = new User("Richard");
+        User Ed = new User("Ed");
+
+         
+
     }
+
+
 
 }

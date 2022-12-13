@@ -35,7 +35,7 @@ public class Dataloader implements ApplicationRunner {
         FoodPlace skewers_beers = new FoodPlace("Skewers&Beers", "Chinese",
                 "12:00 - 22:00", "www.Skewer&Beer.com" );
 
-        FoodPlace chinChinLab = new FoodPlace("Chin Chin Labs", "Hot Drinks", "12:30 - 22:00",
+        FoodPlace chinChinLab = new FoodPlace("Chin Chin Labs", "Desert", "12:30 - 22:00",
                 "www.ChinChin.com");
 
         FoodPlace silkRoad = new FoodPlace("Slik Road", "Chinese",
@@ -59,20 +59,77 @@ public class Dataloader implements ApplicationRunner {
         User Ed = new User("Ed");
 
 
+
         Review review1 = new Review(3, "The food was decent.", LocalDate.of(2022,10,06));
         Review review2 = new Review(4.5, "The food was amazing.",LocalDate.of(2022,10, 12));
         Review review3 = new Review(1, "The establishment had rats falling from the ceiling.",LocalDate.of(2022,10,30));
         Review review4 = new Review(4, "Lost for words.",LocalDate.of(2022, 11, 01));
         Review review5 = new Review(5, "Stunned.",LocalDate.of(2022,11,06));
-        Review review6 = new Review(2, "The spaghetti looked questionable.",LocalDate.of(2022,11,25));
+        Review review6 = new Review(2, "The noodles looked questionable.",LocalDate.of(2022,11,25));
         Review review7 = new Review(3.5, "Rude staff, I was ignored by the waiter.",LocalDate.of(2022,11,30));
         Review review8 = new Review(5, "The meal was exquisite.",LocalDate.of(2022,12,01));
         Review review9 = new Review(1.5, "My Chicken nugget looked like a cockroach.",LocalDate.of(2022,11,05));
         Review review10 = new Review(4.5, "The food was rich in umami.",LocalDate.of(2022,11,25));
 
+        Emma.addReview(review1);
+        Emma.addReview(review8);
+        Emma.addReview(review9);
 
+        Shawn.addReview(review2);
 
-         
+        Salma.addReview(review3);
+        Salma.addReview(review10);
+
+        Georgia.addReview(review4);
+
+        Zsolt.addReview(review5);
+
+        Anna.addReview(review6);
+
+        Jenna.addReview(review7);
+
+        skewers_beers.addReview(review7);
+        skewers_beers.addReview(review1);
+        skewers_beers.addReview(review6);
+        skewers_beers.addReview(review8);
+
+        chinChinLab.addReview(review2);
+
+        silkRoad.addReview(review4);
+        silkRoad.addReview(review5);
+
+        amigos.addReview(review3);
+        amigos.addReview(review9);
+
+        tsujiri.addReview(review10);
+
+        foodPlaceService.addFoodPlace(tsujiri);
+        foodPlaceService.addFoodPlace(amigos);
+        foodPlaceService.addFoodPlace(silkRoad);
+        foodPlaceService.addFoodPlace(chinChinLab);
+        foodPlaceService.addFoodPlace(skewers_beers);
+
+        userService.addUser(Emma);
+        userService.addUser(Shawn);
+        userService.addUser(Georgia);
+        userService.addUser(Salma);
+        userService.addUser(Anna);
+        userService.addUser(Jenna);
+        userService.addUser(Zsolt);
+        userService.addUser(Colin);
+        userService.addUser(Richard);
+        userService.addUser(Ed);
+
+        reviewService.addReview(review1);
+        reviewService.addReview(review2);
+        reviewService.addReview(review3);
+        reviewService.addReview(review4);
+        reviewService.addReview(review5);
+        reviewService.addReview(review6);
+        reviewService.addReview(review7);
+        reviewService.addReview(review8);
+        reviewService.addReview(review9);
+        reviewService.addReview(review10);
 
     }
 

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Component
 public class Dataloader implements ApplicationRunner {
@@ -59,6 +60,8 @@ public class Dataloader implements ApplicationRunner {
         FoodPlace tsujiri = new FoodPlace("Tsujiri", "Japanese",
                 "10:00 - 22:00", "www.tsujiri_london.com");
 
+        foodPlaceRepository.saveAll(List.of(skewers_beers, chinChinLab, silkRoad, amigos, tsujiri));
+
         User Emma = new User("Emma");
         User Shawn = new User("Shawn");
         User Georgia = new User("Georgia");
@@ -70,6 +73,7 @@ public class Dataloader implements ApplicationRunner {
         User Richard = new User("Richard");
         User Ed = new User("Ed");
 
+        userRepository.saveAll(List.of(Emma, Shawn, Georgia, Salma, Anna, Jenna, Zsolt, Colin, Richard, Ed));
 
 
         Review review1 = new Review(3, "The food was decent.", LocalDate.of(2022,10,06));
@@ -83,6 +87,7 @@ public class Dataloader implements ApplicationRunner {
         Review review9 = new Review(1.5, "My Chicken nugget looked like a cockroach.",LocalDate.of(2022,11,05));
         Review review10 = new Review(4.5, "The food was rich in umami.",LocalDate.of(2022,11,25));
 
+        reviewRepository.saveAll(List.of(review1, review2, review3, review4, review5, review6, review7, review8, review9, review10));
         Emma.addReview(review1);
         Emma.addReview(review8);
         Emma.addReview(review9);
@@ -115,7 +120,7 @@ public class Dataloader implements ApplicationRunner {
 
         tsujiri.addReview(review10);
 
-        
+
         foodPlaceService.addFoodPlace(tsujiri);
         foodPlaceRepository.save(tsujiri);
         foodPlaceService.addFoodPlace(amigos);

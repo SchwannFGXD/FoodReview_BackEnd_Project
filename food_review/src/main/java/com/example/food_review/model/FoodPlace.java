@@ -1,4 +1,4 @@
-package model;
+package com.example.food_review.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,8 +21,8 @@ public class FoodPlace {
     @Column(name = "website")
     private String website;
 
-    @OneToMany (mappedBy = "food_place")
-    @JsonIgnoreProperties({"food_place"})
+    @OneToMany (mappedBy = "foodPlace")
+    @JsonIgnoreProperties({"reviews"})
     private List<Review> reviews;
 
     public FoodPlace() {

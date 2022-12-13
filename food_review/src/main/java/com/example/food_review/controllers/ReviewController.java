@@ -1,13 +1,11 @@
 package com.example.food_review.controllers;
 
-import model.Review;
-import model.User;
+import com.example.food_review.model.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import services.ReviewService;
-import services.UserService;
+import com.example.food_review.services.ReviewService;
 
 import java.util.List;
 import java.util.Optional;

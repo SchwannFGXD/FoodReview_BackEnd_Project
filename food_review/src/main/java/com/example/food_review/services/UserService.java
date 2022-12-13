@@ -1,11 +1,10 @@
-package services;
+package com.example.food_review.services;
 
 
-import model.FoodPlace;
-import model.User;
+import com.example.food_review.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.UserRepository;
+import com.example.food_review.repositories.UserRepository;
 
 import java.util.List;
 import java.util.Optional;

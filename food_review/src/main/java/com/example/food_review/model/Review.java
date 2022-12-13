@@ -1,4 +1,4 @@
-package model;
+package com.example.food_review.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;

@@ -3,6 +3,9 @@ package com.example.food_review.components;
 import com.example.food_review.model.FoodPlace;
 import com.example.food_review.model.Review;
 import com.example.food_review.model.User;
+import com.example.food_review.repositories.FoodPlaceRepository;
+import com.example.food_review.repositories.ReviewRepository;
+import com.example.food_review.repositories.UserRepository;
 import com.example.food_review.services.FoodPlaceService;
 import com.example.food_review.services.ReviewService;
 import com.example.food_review.services.UserService;
@@ -25,6 +28,15 @@ public class Dataloader implements ApplicationRunner {
 
     @Autowired
     ReviewService reviewService;
+
+    @Autowired
+    FoodPlaceRepository foodPlaceRepository;
+
+    @Autowired
+    ReviewRepository reviewRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     public Dataloader(){
     }
@@ -103,33 +115,61 @@ public class Dataloader implements ApplicationRunner {
 
         tsujiri.addReview(review10);
 
+        
         foodPlaceService.addFoodPlace(tsujiri);
+        foodPlaceRepository.save(tsujiri);
         foodPlaceService.addFoodPlace(amigos);
+        foodPlaceRepository.save(amigos);
         foodPlaceService.addFoodPlace(silkRoad);
+        foodPlaceRepository.save(silkRoad);
         foodPlaceService.addFoodPlace(chinChinLab);
+        foodPlaceRepository.save(chinChinLab);
         foodPlaceService.addFoodPlace(skewers_beers);
+        foodPlaceRepository.save(skewers_beers);
 
         userService.addUser(Emma);
+        userRepository.save(Emma);
         userService.addUser(Shawn);
+        userRepository.save(Shawn);
         userService.addUser(Georgia);
+        userRepository.save(Georgia);
         userService.addUser(Salma);
+        userRepository.save(Salma);
         userService.addUser(Anna);
+        userRepository.save(Anna);
         userService.addUser(Jenna);
+        userRepository.save(Jenna);
         userService.addUser(Zsolt);
+        userRepository.save(Zsolt);
         userService.addUser(Colin);
+        userRepository.save(Colin);
         userService.addUser(Richard);
+        userRepository.save(Richard);
         userService.addUser(Ed);
+        userRepository.save(Ed);
+
 
         reviewService.addReview(review1);
+        reviewRepository.save(review1);
         reviewService.addReview(review2);
+        reviewRepository.save(review2);
         reviewService.addReview(review3);
+        reviewRepository.save(review3);
         reviewService.addReview(review4);
+        reviewRepository.save(review4);
         reviewService.addReview(review5);
+        reviewRepository.save(review5);
         reviewService.addReview(review6);
+        reviewRepository.save(review6);
         reviewService.addReview(review7);
+        reviewRepository.save(review7);
         reviewService.addReview(review8);
+        reviewRepository.save(review8);
         reviewService.addReview(review9);
+        reviewRepository.save(review9);
         reviewService.addReview(review10);
+        reviewRepository.save(review10);
+
 
     }
 

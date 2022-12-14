@@ -26,6 +26,17 @@ public class FoodPlaceController {
         List<FoodPlace> foodPlace = foodPlaceService.getAllFoodPlaces();
         return new ResponseEntity<>(foodPlace, HttpStatus.OK);
     }
+
+    @GetMapping("/random")
+    public ResponseEntity<FoodPlace> getRandomFoodPlace(){
+        Optional <FoodPlace> foodPlace = foodPlaceService.getRandomFoodPlace();
+        if(foodPlace.isPresent()){
+            return new ResponseEntity<>(foodPlace.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<FoodPlace> getAllFoodPlaceById(@PathVariable long id){
         Optional <FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);

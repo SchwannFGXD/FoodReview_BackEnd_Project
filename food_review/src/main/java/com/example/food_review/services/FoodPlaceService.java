@@ -51,10 +51,6 @@ public class FoodPlaceService {
         foodPlaceRepository.save(foodPlaceToUpdate);
     }
 
-    public List<FoodPlace> findByName(String name){
-        return foodPlaceRepository.findByName(name);
-    }
-
     public Optional<FoodPlace> getRandomFoodPlace() {
         List<FoodPlace> allFoodPlaces = foodPlaceRepository.findAll();
         List<Long> allIds = new ArrayList<>();

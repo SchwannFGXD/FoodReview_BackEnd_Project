@@ -27,6 +27,7 @@ public class FoodPlaceController {
         return new ResponseEntity<>(foodPlace, HttpStatus.OK);
     }
 
+
     @GetMapping("/random")
     public ResponseEntity<FoodPlace> getRandomFoodPlace(){
         Optional <FoodPlace> foodPlace = foodPlaceService.getRandomFoodPlace();
@@ -40,7 +41,42 @@ public class FoodPlaceController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<FoodPlace> getAllFoodPlaceById(@PathVariable long id){
         Optional <FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
+    }
+    @GetMapping(value = "/name")
+    public ResponseEntity<List<FoodPlace>> getAllFoodPlacesAndFilters(
+            @RequestParam(required = false, name = "name") String name
+    ){
+      if (name != null){
+          return new ResponseEntity<>(foodPlaceService.findByName(name), HttpStatus.OK);
+      }
+         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    }
+
+
+    @GetMapping(value = "/foodtype")
+    public ResponseEntity<List<FoodPlace>> findFoodPlaceByFoodType(
+            @RequestParam(required = false, name = "foodType") String foodType
+    ) {
+        if (foodType != null) {
+            return new ResponseEntity<>(foodPlaceService.findByFoodType(foodType), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/random")
+    public ResponseEntity<FoodPlace> getRandomFoodPlace(){
+        Optional <FoodPlace> foodPlace = foodPlaceService.getRandomFoodPlace();
         if(foodPlace.isPresent()){
+            return new ResponseEntity<>(foodPlace.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<FoodPlace> getAllFoodPlaceById(@PathVariable long id) {
+        Optional<FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
+        if (foodPlace.isPresent()) {
             return new ResponseEntity<>(foodPlace.get(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -50,28 +86,38 @@ public class FoodPlaceController {
 
     @GetMapping(value = "/{id}/reviews")
     public ResponseEntity<List<Review>> getAllReviewsFromFoodPlaceById(@PathVariable long id) {
-        Optional <FoodPlace> foodPlace =foodPlaceService.getFoodPlaceById(id);
+        Optional<FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
         List<Review> reviews = foodPlace.get().getReviews();
         return new ResponseEntity<>(reviews, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<FoodPlace>  newFoodPlace(@RequestBody FoodPlace foodPlace){
+    public ResponseEntity<FoodPlace> newFoodPlace(@RequestBody FoodPlace foodPlace) {
         foodPlaceService.addFoodPlace(foodPlace);
         return new ResponseEntity<>(foodPlace, HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Long> deleteFoodPlace(@PathVariable long id){
+    public ResponseEntity<Long> deleteFoodPlace(@PathVariable long id) {
         foodPlaceService.removeFoodPlaceById(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
     @PutMapping(value = "/{id}")
-    public  ResponseEntity<FoodPlace> updateFoodPlace(@RequestBody FoodPlace foodPlace, @PathVariable Long id){
-        foodPlaceService.updateFoodPlace(foodPlace,id);
+    public ResponseEntity<FoodPlace> updateFoodPlace(@RequestBody FoodPlace foodPlace, @PathVariable Long id) {
+        foodPlaceService.updateFoodPlace(foodPlace, id);
         return new ResponseEntity<>(foodPlace, HttpStatus.OK);
 
 
+    }
+
+    @GetMapping("/{id}/average_rating")
+    public ResponseEntity<Double> getAvg(@PathVariable Long id) {
+        Optional<FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
+        if (foodPlace.isPresent()) {
+            return new ResponseEntity<>(foodPlaceService.getAvg(foodPlace.get()), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 }

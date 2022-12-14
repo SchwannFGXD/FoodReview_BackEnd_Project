@@ -3,6 +3,7 @@ package com.example.food_review.controllers;
 import com.example.food_review.model.FoodPlace;
 import com.example.food_review.model.Review;
 import com.example.food_review.model.User;
+import org.apache.el.util.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,19 @@ public class UserController {
         List<User> user = userService.getAllUsers();
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/username")
+    public ResponseEntity<List<User>> getAllUsersAndFilters(
+            @RequestParam(required = false, name = "name") String name){
+//        Get user by name
+        if (name != null){
+            return new ResponseEntity<>(userService.findByName(name), HttpStatus.OK);
+        }
+//        Return null if there's no name
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    }
+
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<User> getUserByID(@PathVariable long id){
         Optional<User> user = userService.getUserById(id);

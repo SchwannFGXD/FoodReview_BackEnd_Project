@@ -1,5 +1,7 @@
 package com.example.food_review.services;
 import com.example.food_review.model.FoodPlace;
+import com.example.food_review.model.Review;
+import com.example.food_review.repositories.ReviewRepository;
 import com.sun.source.tree.WhileLoopTree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,8 @@ public class FoodPlaceService {
 
     @Autowired
     FoodPlaceRepository foodPlaceRepository;
+    @Autowired
+    ReviewRepository reviewRepository;
 
     public List<FoodPlace> getAllFoodPlaces() {return foodPlaceRepository.findAll();}
 
@@ -31,14 +35,18 @@ public class FoodPlaceService {
     }
 
     public void removeFoodPlaceById(Long id) {
-//        findallreviews for the foodplace, loop through all food reviews and delete one by one.
-        foodPlaceRepository.deleteById(id);}
+        Optional <FoodPlace> randomFoodPlace = foodPlaceRepository.findById(id);
+        for (Review review: randomFoodPlace.get().getReviews()){
+            reviewRepository.delete(review);
+        }
+        foodPlaceRepository.deleteById(id);
+    }
 
     public void updateFoodPlace(FoodPlace foodPlace, Long id){
         FoodPlace foodPlaceToUpdate = foodPlaceRepository.findById(id).get();
         foodPlaceToUpdate.setName(foodPlace.getName());
         foodPlaceToUpdate.setFoodType(foodPlace.getFoodType());
-        foodPlaceToUpdate.setOpeningHours(foodPlace.getOpeningHours());
+        foodPlaceToUpdate.setOpeningHour(foodPlace.getOpeningHour());
         foodPlaceToUpdate.setWebsite(foodPlace.getWebsite());
         foodPlaceRepository.save(foodPlaceToUpdate);
     }
@@ -58,6 +66,18 @@ public class FoodPlaceService {
             }
         }
     }
+    public double getAvg(FoodPlace foodPlace){
+        List<Review> reviewList = foodPlace.getReviews();
+        double sum=0;
+        for ( Review review: reviewList) {
+            double number = review.getRating();
+            sum += number;
+        }
+        return (sum/reviewList.size());
+    }
 
 
+    public List<FoodPlace> findByFoodType(String foodType){
+        return foodPlaceRepository.findByFoodType(foodType);
+    }
 }

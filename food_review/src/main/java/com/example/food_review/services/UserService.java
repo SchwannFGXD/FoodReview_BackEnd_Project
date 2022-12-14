@@ -54,4 +54,7 @@ public class UserService {
         return foodPlaceList;
     }
 
+    public List<User> findByName (String name){
+        return userRepository.findByNameEquals(name);
+    }
 }

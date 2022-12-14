@@ -19,11 +19,24 @@ public class UserController {
     @Autowired
     UserService userService;
 
+//    @GetMapping
+//    public ResponseEntity<List<User>> getAllUsers(){
+//        List<User> user = userService.getAllUsers();
+//        return new ResponseEntity<>(user, HttpStatus.OK);
+//    }
+
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers(){
-        List<User> user = userService.getAllUsers();
-        return new ResponseEntity<>(user, HttpStatus.OK);
+    public ResponseEntity<List<User>> getAllUsersAndFilters(
+            @RequestParam(required = false, name = "name") String name){
+//        Get user by name
+        if (name != null){
+            return new ResponseEntity<>(userService.findByName(name), HttpStatus.OK);
+        }
+//        Get all users
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
+
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<User> getUserByID(@PathVariable long id){
         Optional<User> user = userService.getUserById(id);

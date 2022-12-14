@@ -21,11 +21,32 @@ public class FoodPlaceController {
     @Autowired
     ReviewService reviewService;
 
+//    @GetMapping
+//    public ResponseEntity<List<FoodPlace>> getAllFoodPlace(){
+//        List<FoodPlace> foodPlace = foodPlaceService.getAllFoodPlaces();
+//        return new ResponseEntity<>(foodPlace, HttpStatus.OK);
+//    }
+
     @GetMapping
-    public ResponseEntity<List<FoodPlace>> getAllFoodPlace(){
-        List<FoodPlace> foodPlace = foodPlaceService.getAllFoodPlaces();
-        return new ResponseEntity<>(foodPlace, HttpStatus.OK);
+    public ResponseEntity<List<FoodPlace>> getAllFoodPlacesAndFilters(
+            @RequestParam(required = false, name = "name") String name
+    ){
+      if (name != null){
+          return new ResponseEntity<>(foodPlaceService.findByName(name), HttpStatus.OK);
+      }
+        return new ResponseEntity<>(foodPlaceService.getAllFoodPlaces(), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/foodtype")
+    public ResponseEntity<List<FoodPlace>> findFoodPlaceByFoodType(
+            @RequestParam(required = false, name = "foodType") String foodType
+    ){
+        if (foodType != null){
+            return new ResponseEntity<>(foodPlaceService.findByFoodType(foodType), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<FoodPlace> getAllFoodPlaceById(@PathVariable long id){
         Optional <FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
@@ -63,4 +84,6 @@ public class FoodPlaceController {
 
 
     }
+
+
 }

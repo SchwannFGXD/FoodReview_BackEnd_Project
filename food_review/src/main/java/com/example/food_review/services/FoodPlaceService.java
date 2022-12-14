@@ -33,5 +33,11 @@ public class FoodPlaceService {
         foodPlaceRepository.save(foodPlaceToUpdate);
     }
 
+    public List<FoodPlace> findByName(String name){
+        return foodPlaceRepository.findByName(name);
+    }
 
+    public List<FoodPlace> findByFoodType(String foodType){
+        return foodPlaceRepository.findByFoodType(foodType);
+    }
 }

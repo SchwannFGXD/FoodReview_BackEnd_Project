@@ -9,7 +9,6 @@ import java.util.Optional;
 
 @Service
 public class FoodPlaceService {
-
     @Autowired
     FoodPlaceRepository foodPlaceRepository;
 
@@ -21,7 +20,9 @@ public class FoodPlaceService {
         foodPlaceRepository.save(foodplace);
     }
 
-    public void removeFoodPlaceById(Long id) { foodPlaceRepository.deleteById(id);}
+    public void removeFoodPlaceById(Long id) {
+//        findallreviews for the foodplace, loop through all food reviews and delete one by one.
+        foodPlaceRepository.deleteById(id);}
 
     public void updateFoodPlace(FoodPlace foodPlace, Long id){
         FoodPlace foodPlaceToUpdate = foodPlaceRepository.findById(id).get();

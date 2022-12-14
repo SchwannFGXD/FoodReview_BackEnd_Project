@@ -42,7 +42,7 @@ public class Dataloader implements ApplicationRunner {
         FoodPlace chinChinLab = new FoodPlace("Chin Chin Labs", "Desert", "12:30 - 22:00",
                 "www.ChinChin.com");
 
-        FoodPlace silkRoad = new FoodPlace("Slik Road", "Chinese",
+        FoodPlace silkRoad = new FoodPlace("Silk Road", "Chinese",
                 "14:00 - 23:30", "www.Slik_Road.com");
 
         FoodPlace amigos = new FoodPlace("Amigos", "Mexican",

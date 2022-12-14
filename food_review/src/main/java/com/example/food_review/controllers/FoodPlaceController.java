@@ -22,14 +22,15 @@ public class FoodPlaceController {
     ReviewService reviewService;
 
     @GetMapping
-    public ResponseEntity<List<FoodPlace>> getAllFoodPlace(){
+    public ResponseEntity<List<FoodPlace>> getAllFoodPlace() {
         List<FoodPlace> foodPlace = foodPlaceService.getAllFoodPlaces();
         return new ResponseEntity<>(foodPlace, HttpStatus.OK);
     }
+
     @GetMapping(value = "/{id}")
-    public ResponseEntity<FoodPlace> getAllFoodPlaceById(@PathVariable long id){
-        Optional <FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
-        if(foodPlace.isPresent()){
+    public ResponseEntity<FoodPlace> getAllFoodPlaceById(@PathVariable long id) {
+        Optional<FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
+        if (foodPlace.isPresent()) {
             return new ResponseEntity<>(foodPlace.get(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -39,28 +40,38 @@ public class FoodPlaceController {
 
     @GetMapping(value = "/{id}/reviews")
     public ResponseEntity<List<Review>> getAllReviewsFromFoodPlaceById(@PathVariable long id) {
-        Optional <FoodPlace> foodPlace =foodPlaceService.getFoodPlaceById(id);
+        Optional<FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
         List<Review> reviews = foodPlace.get().getReviews();
         return new ResponseEntity<>(reviews, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<FoodPlace>  newFoodPlace(@RequestBody FoodPlace foodPlace){
+    public ResponseEntity<FoodPlace> newFoodPlace(@RequestBody FoodPlace foodPlace) {
         foodPlaceService.addFoodPlace(foodPlace);
         return new ResponseEntity<>(foodPlace, HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Long> deleteFoodPlace(@PathVariable long id){
+    public ResponseEntity<Long> deleteFoodPlace(@PathVariable long id) {
         foodPlaceService.removeFoodPlaceById(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
     @PutMapping(value = "/{id}")
-    public  ResponseEntity<FoodPlace> updateFoodPlace(@RequestBody FoodPlace foodPlace, @PathVariable Long id){
-        foodPlaceService.updateFoodPlace(foodPlace,id);
+    public ResponseEntity<FoodPlace> updateFoodPlace(@RequestBody FoodPlace foodPlace, @PathVariable Long id) {
+        foodPlaceService.updateFoodPlace(foodPlace, id);
         return new ResponseEntity<>(foodPlace, HttpStatus.OK);
 
 
+    }
+
+    @GetMapping("/{id}/averagerating")
+    public ResponseEntity<Double> getAvg(@PathVariable Long id) {
+        Optional<FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
+        if (foodPlace.isPresent()) {
+            return new ResponseEntity<>(foodPlace.get().getAvg(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 }

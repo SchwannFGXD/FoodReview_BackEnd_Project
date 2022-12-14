@@ -91,4 +91,19 @@ public class FoodPlace {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
+
+    public double getAvg(){
+        double sum=0;
+
+        for ( Review review: reviews) {
+            double rat = review.getRating();
+            sum += rat;
+        }
+
+
+        return (sum/reviews.size());
+
+    }
 }
+
+

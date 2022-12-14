@@ -107,8 +107,8 @@ public class FoodPlace {
         double sum=0;
 
         for ( Review review: reviews) {
-            double rat = review.getRating();
-            sum += rat;
+            double number = review.getRating();
+            sum += number;
         }
 
 

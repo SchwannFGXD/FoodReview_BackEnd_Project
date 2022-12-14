@@ -1,8 +1,8 @@
 package com.example.food_review.model;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +16,10 @@ public class FoodPlace {
     private String name;
     @Column(name = "food_type")
     private String foodType;
-    @Column(name = "opening_hours")
-    private String openingHours;
+    @Column(name = "opening_hour")
+    private LocalTime openingHour;
+    @Column(name = "closing_hour")
+    private LocalTime closingHour;
     @Column(name = "website")
     private String website;
 
@@ -28,10 +30,11 @@ public class FoodPlace {
     public FoodPlace() {
     }
 
-    public FoodPlace(String name, String foodType, String openingHours, String website) {
+    public FoodPlace(String name, String foodType, LocalTime openingHour,LocalTime closingHour, String website) {
         this.name = name;
         this.foodType = foodType;
-        this.openingHours = openingHours;
+        this.openingHour = openingHour;
+        this.closingHour = closingHour;
         this.website = website;
         this.reviews = new ArrayList<>();
     }
@@ -68,12 +71,20 @@ public class FoodPlace {
         this.foodType = foodType;
     }
 
-    public String getOpeningHours() {
-        return openingHours;
+    public LocalTime getOpeningHour() {
+        return openingHour;
     }
 
-    public void setOpeningHours(String openingHours) {
-        this.openingHours = openingHours;
+    public void setOpeningHour(LocalTime openingHours) {
+        this.openingHour = openingHour;
+    }
+
+    public LocalTime getClosingHour() {
+        return closingHour;
+    }
+
+    public void setClosingHour(LocalTime closingHour) {
+        this.closingHour = closingHour;
     }
 
     public String getWebsite() {
@@ -91,4 +102,19 @@ public class FoodPlace {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
+
+    public double getAvg(){
+        double sum=0;
+
+        for ( Review review: reviews) {
+            double rat = review.getRating();
+            sum += rat;
+        }
+
+
+        return (sum/reviews.size());
+
+    }
 }
+
+

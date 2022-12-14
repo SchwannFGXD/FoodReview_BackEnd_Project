@@ -28,7 +28,7 @@ public class FoodPlaceService {
         FoodPlace foodPlaceToUpdate = foodPlaceRepository.findById(id).get();
         foodPlaceToUpdate.setName(foodPlace.getName());
         foodPlaceToUpdate.setFoodType(foodPlace.getFoodType());
-        foodPlaceToUpdate.setOpeningHours(foodPlace.getOpeningHours());
+        foodPlaceToUpdate.setOpeningHour(foodPlace.getOpeningHour());
         foodPlaceToUpdate.setWebsite(foodPlace.getWebsite());
         foodPlaceRepository.save(foodPlaceToUpdate);
     }

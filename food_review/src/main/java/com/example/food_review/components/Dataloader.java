@@ -9,6 +9,7 @@ import com.example.food_review.repositories.UserRepository;
 import com.example.food_review.services.FoodPlaceService;
 import com.example.food_review.services.ReviewService;
 import com.example.food_review.services.UserService;
+import org.hibernate.hql.spi.id.local.LocalTemporaryTableBulkIdStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -37,19 +38,19 @@ public class Dataloader implements ApplicationRunner {
     public void run (ApplicationArguments args ) throws Exception{
 
         FoodPlace skewers_beers = new FoodPlace("Skewers&Beers", "Chinese",
-                "12:00 - 22:00", "www.Skewer&Beer.com" );
+                LocalTime.of(9,00), LocalTime.of(16,00), "www.Skewer&Beer.com" );
 
-        FoodPlace chinChinLab = new FoodPlace("Chin Chin Labs", "Desert", "12:30 - 22:00",
+        FoodPlace chinChinLab = new FoodPlace("Chin Chin Labs", "Desert", LocalTime.of(15,00),LocalTime.of(21,00),
                 "www.ChinChin.com");
 
         FoodPlace silkRoad = new FoodPlace("Silk Road", "Chinese",
-                "14:00 - 23:30", "www.Slik_Road.com");
+                LocalTime.of(12,00), LocalTime.of(23,00), "www.Slik_Road.com");
 
         FoodPlace amigos = new FoodPlace("Amigos", "Mexican",
-                "11:00 - 20:30", "www.Amigos.com");
+                LocalTime.of(13,00),LocalTime.of(21,00), "www.Amigos.com");
 
         FoodPlace tsujiri = new FoodPlace("Tsujiri", "Japanese",
-                "10:00 - 22:00", "www.tsujiri_london.com");
+                LocalTime.of(12,00),LocalTime.of(22,00), "www.tsujiri_london.com");
 
         foodPlaceRepository.saveAll(List.of(skewers_beers, chinChinLab, silkRoad, amigos, tsujiri));
 

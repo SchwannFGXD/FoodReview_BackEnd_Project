@@ -21,20 +21,20 @@ public class FoodPlaceController {
     @Autowired
     ReviewService reviewService;
 
-//    @GetMapping
-//    public ResponseEntity<List<FoodPlace>> getAllFoodPlace(){
-//        List<FoodPlace> foodPlace = foodPlaceService.getAllFoodPlaces();
-//        return new ResponseEntity<>(foodPlace, HttpStatus.OK);
-//    }
-
     @GetMapping
+    public ResponseEntity<List<FoodPlace>> getAllFoodPlace(){
+        List<FoodPlace> foodPlace = foodPlaceService.getAllFoodPlaces();
+        return new ResponseEntity<>(foodPlace, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/name")
     public ResponseEntity<List<FoodPlace>> getAllFoodPlacesAndFilters(
             @RequestParam(required = false, name = "name") String name
     ){
       if (name != null){
           return new ResponseEntity<>(foodPlaceService.findByName(name), HttpStatus.OK);
       }
-        return new ResponseEntity<>(foodPlaceService.getAllFoodPlaces(), HttpStatus.OK);
+         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
 
 

@@ -37,14 +37,25 @@ public class FoodPlaceController {
         return new ResponseEntity<>(foodPlaceService.getAllFoodPlaces(), HttpStatus.OK);
     }
 
+
     @GetMapping(value = "/foodtype")
     public ResponseEntity<List<FoodPlace>> findFoodPlaceByFoodType(
             @RequestParam(required = false, name = "foodType") String foodType
-    ){
-        if (foodType != null){
+    ) {
+        if (foodType != null) {
             return new ResponseEntity<>(foodPlaceService.findByFoodType(foodType), HttpStatus.OK);
         }
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/random")
+    public ResponseEntity<FoodPlace> getRandomFoodPlace(){
+        Optional <FoodPlace> foodPlace = foodPlaceService.getRandomFoodPlace();
+        if(foodPlace.isPresent()){
+            return new ResponseEntity<>(foodPlace.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping(value = "/{id}")

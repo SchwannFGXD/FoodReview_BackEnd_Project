@@ -1,5 +1,7 @@
 package com.example.food_review.services;
 import com.example.food_review.model.FoodPlace;
+import com.example.food_review.model.Review;
+import com.example.food_review.repositories.ReviewRepository;
 import com.sun.source.tree.WhileLoopTree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,8 @@ public class FoodPlaceService {
 
     @Autowired
     FoodPlaceRepository foodPlaceRepository;
+    @Autowired
+    ReviewRepository reviewRepository;
 
     public List<FoodPlace> getAllFoodPlaces() {return foodPlaceRepository.findAll();}
 
@@ -31,8 +35,12 @@ public class FoodPlaceService {
     }
 
     public void removeFoodPlaceById(Long id) {
-//        findallreviews for the foodplace, loop through all food reviews and delete one by one.
-        foodPlaceRepository.deleteById(id);}
+        Optional <FoodPlace> randomFoodPlace = foodPlaceRepository.findById(id);
+        for (Review review: randomFoodPlace.get().getReviews()){
+            reviewRepository.delete(review);
+        }
+        foodPlaceRepository.deleteById(id);
+    }
 
     public void updateFoodPlace(FoodPlace foodPlace, Long id){
         FoodPlace foodPlaceToUpdate = foodPlaceRepository.findById(id).get();

@@ -96,7 +96,7 @@ public class FoodPlaceController {
 
     }
 
-    @GetMapping("/{id}/averagerating")
+    @GetMapping("/{id}/average_rating")
     public ResponseEntity<Double> getAvg(@PathVariable Long id) {
         Optional<FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
         if (foodPlace.isPresent()) {

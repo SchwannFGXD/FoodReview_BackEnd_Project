@@ -103,18 +103,6 @@ public class FoodPlace {
         this.reviews = reviews;
     }
 
-    public double getAvg(){
-        double sum=0;
-
-        for ( Review review: reviews) {
-            double number = review.getRating();
-            sum += number;
-        }
-
-
-        return (sum/reviews.size());
-
-    }
 }
 
 

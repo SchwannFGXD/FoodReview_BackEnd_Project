@@ -100,7 +100,7 @@ public class FoodPlaceController {
     public ResponseEntity<Double> getAvg(@PathVariable Long id) {
         Optional<FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
         if (foodPlace.isPresent()) {
-            return new ResponseEntity<>(foodPlace.get().getAvg(), HttpStatus.OK);
+            return new ResponseEntity<>(foodPlaceService.getAvg(foodPlace.get()), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

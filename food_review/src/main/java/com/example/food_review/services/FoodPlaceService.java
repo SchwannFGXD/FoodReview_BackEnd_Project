@@ -70,6 +70,15 @@ public class FoodPlaceService {
             }
         }
     }
+    public double getAvg(FoodPlace foodPlace){
+        List<Review> reviewList = foodPlace.getReviews();
+        double sum=0;
+        for ( Review review: reviewList) {
+            double number = review.getRating();
+            sum += number;
+        }
+        return (sum/reviewList.size());
+    }
 
 
     public List<FoodPlace> findByFoodType(String foodType){

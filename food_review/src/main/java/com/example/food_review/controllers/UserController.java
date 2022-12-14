@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/User")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -43,6 +43,12 @@ public class UserController {
         return new ResponseEntity<>(reviews, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{id}/foodplace")
+    public ResponseEntity<List<FoodPlace>> getFoodPlacesFromUser(@PathVariable long id) {
+        Optional<User> user = userService.getUserById(id);
+        List<FoodPlace> foodPlaces = userService.getAllFoodPlacesFromUser(user.get());
+        return new ResponseEntity<>(foodPlaces, HttpStatus.OK);
+    }
     @PostMapping
     public ResponseEntity<User>  addNewUser(@RequestBody User user){
         userService.addUser(user);

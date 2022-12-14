@@ -1,12 +1,14 @@
 package com.example.food_review.services;
 
 
+import com.example.food_review.model.FoodPlace;
 import com.example.food_review.model.Review;
 import com.example.food_review.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.food_review.repositories.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +43,15 @@ public class UserService {
         User  userToUpdate = userRepository.findById(id).get();
         userToUpdate.setName(user.getName());
         userRepository.save(userToUpdate);
+    }
+
+    public List<FoodPlace> getAllFoodPlacesFromUser (User user){
+        List<Review> foodPlaceReviews = user.getReviews();
+        List<FoodPlace> foodPlaceList = new ArrayList<>();
+        for (Review review : foodPlaceReviews){
+            foodPlaceList.add(review.getFoodPlace());
+        }
+        return foodPlaceList;
     }
 
 }

@@ -73,8 +73,8 @@ localhost:8080...
 |.../user/1                    |PUT         |Update user                              |
 |.../foodplace                 |GET         |Display all food places                  |
 |.../foodplace/1               |GET         |Find food place by id                    |
-|.../name?name=Amigos          |GET         |Find food place by name                  |
-|.../foodtype?foodType=Japanese|GET         |Filter food places by food type          |
+|.../foodplace/name?name=Amigos          |GET         |Find food place by name                  |
+|.../foodplace/foodtype?foodType=Japanese|GET         |Filter food places by food type          |
 |.../foodplace/random          |GET         |Find a random food place                 |
 |.../foodplace/1/reviews       |GET         |Get all reviews from a food place        |
 |.../foodplace/1/average_rating|GET         |Get average rating of a food place       |

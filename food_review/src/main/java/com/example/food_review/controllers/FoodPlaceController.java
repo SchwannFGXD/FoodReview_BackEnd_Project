@@ -2,6 +2,7 @@ package com.example.food_review.controllers;
 
 import com.example.food_review.model.FoodPlace;
 import com.example.food_review.model.Review;
+import com.example.food_review.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -98,9 +99,9 @@ public class FoodPlaceController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<FoodPlace> updateFoodPlace(@RequestBody FoodPlace foodPlace, @PathVariable Long id) {
         foodPlaceService.updateFoodPlace(foodPlace, id);
-        return new ResponseEntity<>(foodPlace, HttpStatus.OK);
+        Optional<FoodPlace>updatedFoodPlace = foodPlaceService.getFoodPlaceById(id);
 
-
+        return new ResponseEntity<>(updatedFoodPlace.get(), HttpStatus.OK);
     }
 
     //get average rating

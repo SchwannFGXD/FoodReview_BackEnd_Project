@@ -4,6 +4,7 @@ package com.example.food_review.services;
 import com.example.food_review.model.FoodPlace;
 import com.example.food_review.model.Review;
 import com.example.food_review.model.User;
+import com.example.food_review.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.food_review.repositories.UserRepository;
@@ -17,6 +18,8 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    ReviewRepository reviewRepository;
 
     public List<User> getAllUsers(){
         return userRepository.findAll();
@@ -36,6 +39,10 @@ public class UserService {
     }
 
     public void removeUserByID(Long id){
+        Optional <User> user = userRepository.findById(id);
+        for (Review review: user.get().getReviews()){
+            reviewRepository.delete(review);
+        }
         userRepository.deleteById(id);
     }
 

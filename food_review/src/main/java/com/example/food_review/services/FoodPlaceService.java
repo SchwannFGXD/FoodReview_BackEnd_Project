@@ -35,8 +35,8 @@ public class FoodPlaceService {
     }
 
     public void removeFoodPlaceById(Long id) {
-        Optional <FoodPlace> randomFoodPlace = foodPlaceRepository.findById(id);
-        for (Review review: randomFoodPlace.get().getReviews()){
+        Optional <FoodPlace> foodPlace = foodPlaceRepository.findById(id);
+        for (Review review: foodPlace.get().getReviews()){
             reviewRepository.delete(review);
         }
         foodPlaceRepository.deleteById(id);

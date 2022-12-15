@@ -43,10 +43,6 @@ public class FoodPlace {
         this.reviews.add(review);
     }
 
-    public void removeReview(Review review){
-        this.reviews.remove(review);
-    }
-
     public Long getId() {
         return id;
     }

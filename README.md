@@ -1,13 +1,15 @@
-# Team 1 - Best Bytes 
-## Taking life one bite at a time
- 
+## Team 1 - Best Bytes 
+Best Bytes alllows users to submit a food review,further interaction is also available through deleting and updating reviews and so much more.
+
+*** Taking life one bite at a time***
+
+
 ## Project Description
+We wanted to create a space where food lovers just like us can share their food related experiences all in one place. 
 
-We have created a back-end project using Java that focuses on food reviews that can be created by the user. Before jumping into our project we created a UML and ERD diagram to help us with planning the project more (there is a file within our repository where you can access these diagrams). We implemented full **CRUD** functionality making it as easy as possible to make changes to our file.  
+This application gives the user the space to add, update and delete reviews to the database - we have created specific classes for this with properties that we deemed to be the most important for creating these reviews.
 
-## What does our application do? 
-
-This application gives user the space to add reviews to the database we have created specific classes for this with properties that we deemed to be the most important for creating these reviews. Through our controllers each class' data is able to be accessed, added to, removed from and updated. 
+## Key Features 
 
 
 **We have created:**
@@ -28,3 +30,4 @@ What your application does
 
 Why you used the technologies you used,
 Some of the challenges you faced and features you hope to implement in the future.
+

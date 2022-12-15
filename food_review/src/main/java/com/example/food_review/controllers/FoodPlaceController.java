@@ -22,9 +22,40 @@ public class FoodPlaceController {
     ReviewService reviewService;
 
     @GetMapping
-    public ResponseEntity<List<FoodPlace>> getAllFoodPlace() {
+    public ResponseEntity<List<FoodPlace>> getAllFoodPlace(){
         List<FoodPlace> foodPlace = foodPlaceService.getAllFoodPlaces();
         return new ResponseEntity<>(foodPlace, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/name")
+    public ResponseEntity<List<FoodPlace>> getAllFoodPlacesAndFilters(
+            @RequestParam(required = false, name = "name") String name
+    ){
+      if (name != null){
+          return new ResponseEntity<>(foodPlaceService.findByName(name), HttpStatus.OK);
+      }
+         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    }
+
+
+    @GetMapping(value = "/foodtype")
+    public ResponseEntity<List<FoodPlace>> findFoodPlaceByFoodType(
+            @RequestParam(required = false, name = "foodType") String foodType
+    ) {
+        if (foodType != null) {
+            return new ResponseEntity<>(foodPlaceService.findByFoodType(foodType), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/random")
+    public ResponseEntity<FoodPlace> getRandomFoodPlace(){
+        Optional <FoodPlace> foodPlace = foodPlaceService.getRandomFoodPlace();
+        if(foodPlace.isPresent()){
+            return new ResponseEntity<>(foodPlace.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping(value = "/{id}")
@@ -65,11 +96,11 @@ public class FoodPlaceController {
 
     }
 
-    @GetMapping("/{id}/averagerating")
+    @GetMapping("/{id}/average_rating")
     public ResponseEntity<Double> getAvg(@PathVariable Long id) {
         Optional<FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
         if (foodPlace.isPresent()) {
-            return new ResponseEntity<>(foodPlace.get().getAvg(), HttpStatus.OK);
+            return new ResponseEntity<>(foodPlaceService.getAvg(foodPlace.get()), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

@@ -1,6 +1,11 @@
 package com.example.food_review.services;
 
+import com.example.food_review.dtos.ReviewDTO;
+import com.example.food_review.model.FoodPlace;
 import com.example.food_review.model.Review;
+import com.example.food_review.model.User;
+import com.example.food_review.repositories.FoodPlaceRepository;
+import com.example.food_review.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.food_review.repositories.ReviewRepository;
@@ -14,6 +19,11 @@ public class ReviewService {
     @Autowired
     ReviewRepository reviewRepository;
 
+    @Autowired
+    FoodPlaceRepository foodPlaceRepository;
+    @Autowired
+    UserRepository userRepository;
+
     public List<Review> displayAllReviews(){
         return reviewRepository.findAll();
     }
@@ -22,8 +32,12 @@ public class ReviewService {
         return reviewRepository.findById(id);
     }
 
-    public void addReview(Review review){
+    public Review addReview(ReviewDTO reviewDTO){
+        User userObject = userRepository.findById(reviewDTO.getUserId()).get();
+        FoodPlace foodPlaceObject = foodPlaceRepository.findById(reviewDTO.getFoodPlaceId()).get();
+        Review review= new Review(reviewDTO.getRating(), reviewDTO.getReviewText(), reviewDTO.getDate(), foodPlaceObject,userObject);
         reviewRepository.save(review);
+        return review;
     }
 
     public void deleteReviewById(Long id){

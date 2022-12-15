@@ -26,7 +26,7 @@ public class FoodPlace {
     private double averageRating;
 
     @OneToMany (mappedBy = "foodPlace")
-    @JsonIgnoreProperties({"reviews"})
+    @JsonIgnoreProperties({"reviews","foodPlace"})
     private List<Review> reviews;
 
     public FoodPlace() {
@@ -124,13 +124,13 @@ public class FoodPlace {
     public void update(){
         double sum=0;
         if(reviews.isEmpty()){
-            averageRating =0;
+            averageRating =0.00;
         }
         for ( Review review: reviews) {
             double number = review.getRating();
             sum += number;
         }
-        averageRating= (sum/reviews.size());
+        averageRating= sum/reviews.size();
     }
 }
 

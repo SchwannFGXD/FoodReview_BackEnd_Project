@@ -25,14 +25,11 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties({"reviews"})
-    @JsonIgnore
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "food_place_id")
     @JsonIgnoreProperties({"reviews","foodPlace"})
-   @JsonIgnore
-
     private FoodPlace foodPlace;
 
     public Review(double rating, String reviewText, LocalDate date, FoodPlace foodPlace, User user){
@@ -77,7 +74,7 @@ public class Review {
         this.id = id;
     }
 
-    @JsonIgnore
+
     public User getUser() {
         return user;
     }
@@ -85,7 +82,6 @@ public class Review {
     public void setUser(User user) {
         this.user = user;
     }
-    @JsonIgnore
     public FoodPlace getFoodPlace() {
         return foodPlace;
     }
@@ -94,11 +90,11 @@ public class Review {
         this.foodPlace = foodPlace;
     }
 
-    public String getFoodPlaceName(){
-        return foodPlace.getName();
-    }
-
-    public String getUserName(){
-        return user.getName();
-    }
+//    public String getFoodPlaceName(){
+//        return foodPlace.getName();
+//    }
+//
+//    public String getUserName(){
+//        return user.getName();
+//    }
 }

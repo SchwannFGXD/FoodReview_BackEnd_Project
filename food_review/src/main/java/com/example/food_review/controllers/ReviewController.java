@@ -1,5 +1,6 @@
 package com.example.food_review.controllers;
 
+import com.example.food_review.dtos.ReviewDTO;
 import com.example.food_review.model.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,8 +36,8 @@ public class ReviewController {
     }
 
     @PostMapping
-    public ResponseEntity<Review> addNewReview(@RequestBody Review review) {
-        reviewService.addReview(review);
+    public ResponseEntity<Review> addNewReview(@RequestBody ReviewDTO reviewDTO) {
+        Review review = reviewService.addReview(reviewDTO);
         return new ResponseEntity<>(review, HttpStatus.CREATED);
     }
 

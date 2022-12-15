@@ -1,4 +1,4 @@
-## Team 1 - Best Bytes 
+# Team 1 - Best Bytes 
 <p align = "center">
 <img width="300" alt="Screenshot 2022-12-15 at 11 13 42" src="https://user-images.githubusercontent.com/60015635/207845276-0b5715fa-7549-4253-8e6e-7c64dc28177f.png">
 </p>
@@ -30,10 +30,13 @@ Beyond our basic CRUD functionalilty, we decided to implement a few key features
 ### UML MVP ###
 <img width="986" alt="UML MVP" src="https://user-images.githubusercontent.com/60015635/207842537-5b50a8c3-2595-44bf-b323-1c7b9f1f3b09.png">
 
-### ERD MVP ###
+### ERD  ###
 
 We used two one-to-many relationships, so one user to many reviews and one food place to many reviews.
 <img width="986" alt="ERD MVP" src="https://user-images.githubusercontent.com/60015635/207842999-a269756e-bfb7-488a-a82e-25219a526afb.png">
+
+### MVC ###
+<img width="1408" alt="Screenshot 2022-12-15 at 11 48 20" src="https://user-images.githubusercontent.com/60015635/207851793-3c86a793-c404-40dd-8f59-5b2cb67d0172.png">
 
 ## Extensions ##
 
@@ -52,8 +55,9 @@ We used two one-to-many relationships, so one user to many reviews and one food 
 - Git and GitHub
 
 ## Installation Instructions ##
-Git clone SSH Key
-Create a database called food_review in the terminal (createdb food_review)
+TO copy our git repo, please follow the instructions below:
+- Git clone SSH Key git clone git@github.com:e-b-m/team_1_food_review.git 
+- Create a database called food_review in the terminal (createdb food_review)
 
 ## Routes ##
 localhost:8080...
@@ -108,12 +112,7 @@ Here is the code from the Review Controller.
 
 
 ## Thank you ##
+Thank you to all the trainers for helping and inspiring us, and thank you to everyone on our cohort for supporting us. 
 
-
-The quality of a README description often differentiates a good project from a bad project. A good one takes advantage of the opportunity to explain and showcase:
-
-What your application does 
-
-Why you used the technologies you used,
-Some of the challenges you faced and features you hope to implement in the future.
+See you next year 😘
 

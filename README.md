@@ -5,7 +5,7 @@
 
 Best Bytes alllows users to submit a food review, further interaction is also available through deleting and updating reviews and so much more.
 <p align = "center">
-*Taking life one bite at a time*
+Taking life one bite at a time
 </p>
 
 ## Project Description
@@ -44,15 +44,16 @@ We used two one-to-many relationships, so one user to many reviews and one food 
 
 
 ## Tech Stack ##
-Java
-Spring Framework (depend: Spring Web, Spring Boot DevTools, PostgreSQL Driver, Spring Data JPA
-Postman
-Postico
-Terminal
-Git and GitHub
+- Java
+- Spring Framework (dependencies: Spring Web, Spring Boot DevTools, PostgreSQL Driver, Spring Data JPA
+- Postman
+- Postico
+- Terminal
+- Git and GitHub
 
 ## Installation Instructions ##
-
+Git clone SSH Key
+Create a database called food_review in the terminal (createdb food_review)
 
 ## Routes ##
 localhost:8080...
@@ -85,6 +86,26 @@ localhost:8080...
 
 
 ## Testing ##
+We decided to test all our routes in Postman and Postico.
+
+Here is a sample of our testing in Postman - it shows our GET request to display all the reviews.
+
+<img width="600" alt="Screenshot 2022-12-15 at 09 47 10" src="https://user-images.githubusercontent.com/110283546/207847660-acd80bd6-de06-4474-9809-c18a6b35ea05.png">
+
+This is what our Review table looks like in Postico.
+
+<img width="851" alt="Screenshot 2022-12-15 at 11 31 03" src="https://user-images.githubusercontent.com/110283546/207850516-1520efb1-cf4b-474d-9cc0-45af4c0a55cb.png">
+
+
+Here is the code from the Review Controller.
+
+`    @GetMapping
+    public ResponseEntity<List<Review>> getAllReviews() {
+        List<Review> reviews = reviewService.displayAllReviews();
+        return new ResponseEntity<>(reviews, HttpStatus.OK);
+    }`
+
+
 
 ## Thank you ##
 

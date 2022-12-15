@@ -76,7 +76,7 @@ public class Dataloader implements ApplicationRunner {
         Review review6 = new Review(2, "The noodles looked questionable.",LocalDate.of(2022,11,25),skewers_beers, Anna);
         Review review7 = new Review(3.5, "Rude staff, I was ignored by the waiter.",LocalDate.of(2022,11,30), skewers_beers, Jenna);
         Review review8 = new Review(5, "The meal was exquisite.",LocalDate.of(2022,12,01), skewers_beers, Emma);
-        Review review9 = new Review(1.5, "My Chicken nugget looked like a cockroach.",LocalDate.of(2022,11,05), amigos, Emma);
+        Review review9 = new Review(1.5, "My chicken nugget looked like a cockroach.",LocalDate.of(2022,11,05), amigos, Emma);
         Review review10 = new Review(4.5, "The food was rich in umami.",LocalDate.of(2022,11,25), tsujiri, Salma);
 
         reviewRepository.save(review1);
@@ -89,5 +89,11 @@ public class Dataloader implements ApplicationRunner {
         reviewRepository.save(review8);
         reviewRepository.save(review9);
         reviewRepository.save(review10);
+
+        List<FoodPlace> allFoodPlaces = foodPlaceRepository.findAll();
+        for (FoodPlace foodPlaceToUpdate: allFoodPlaces){
+            foodPlaceToUpdate.update();
+            foodPlaceRepository.save(foodPlaceToUpdate);
+        }
     }
 }

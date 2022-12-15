@@ -70,7 +70,8 @@ public class FoodPlaceService {
             }
         }
     }
-    public double getAvg(FoodPlace foodPlace){
+
+     public double getAvg(FoodPlace foodPlace){
         List<Review> reviewList = foodPlace.getReviews();
         double sum=0;
         for ( Review review: reviewList) {

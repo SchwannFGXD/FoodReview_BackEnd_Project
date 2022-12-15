@@ -22,6 +22,8 @@ public class FoodPlace {
     private LocalTime closingHour;
     @Column(name = "website")
     private String website;
+    @Column (name = "average_rating")
+    private double averageRating;
 
     @OneToMany (mappedBy = "foodPlace")
     @JsonIgnoreProperties({"reviews"})
@@ -37,6 +39,7 @@ public class FoodPlace {
         this.closingHour = closingHour;
         this.website = website;
         this.reviews = new ArrayList<>();
+        this.averageRating = 0;
     }
 
     public void addReview(Review review){
@@ -99,6 +102,36 @@ public class FoodPlace {
         this.reviews = reviews;
     }
 
+
+    public double getAverageRating() {
+//        double sum=0;
+//        if(reviews.isEmpty()){
+//            averageRating =0;
+            return averageRating;
+//        }
+//        for ( Review review: reviews) {
+//            double number = review.getRating();
+//            sum += number;
+//        }
+//        averageRating= (sum/reviews.size());
+//        return averageRating;
+    }
+
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public void update(){
+        double sum=0;
+        if(reviews.isEmpty()){
+            averageRating =0;
+        }
+        for ( Review review: reviews) {
+            double number = review.getRating();
+            sum += number;
+        }
+        averageRating= (sum/reviews.size());
+    }
 }
 
 

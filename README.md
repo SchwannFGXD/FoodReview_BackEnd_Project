@@ -1,13 +1,13 @@
 ## Team 1 - Best Bytes 
-Best Bytes alllows users to submit a food review,further interaction is also available through deleting and updating reviews and so mcuh more.
+Best Bytes alllows users to submit a food review,further interaction is also available through deleting and updating reviews and so much more.
 
 *** Taking life one bite at a time***
 
 
 ## Project Description
-We wanted to create a space where food lovers just like us can share their food related experiences all on one place. 
+We wanted to create a space where food lovers just like us can share their food related experiences all in one place. 
 
-This application gives user the space to add update and delete review  to the database - we have created specific classes for this with properties that we deemed to be the most important for creating these reviews.
+This application gives the user the space to add, update and delete reviews to the database - we have created specific classes for this with properties that we deemed to be the most important for creating these reviews.
 
 ## Key Features 
 

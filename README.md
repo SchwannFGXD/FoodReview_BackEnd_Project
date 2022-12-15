@@ -94,7 +94,8 @@ We decided to test all our routes in Postman and Postico.
 
 Here is a sample of our testing in Postman - it shows our GET request to display all the reviews.
 
-<img width="600" alt="Screenshot 2022-12-15 at 09 47 10" src="https://user-images.githubusercontent.com/110283546/207847660-acd80bd6-de06-4474-9809-c18a6b35ea05.png">
+<img width="716" alt="Screenshot 2022-12-15 at 14 20 53" src="https://user-images.githubusercontent.com/110283546/207885190-c20d8dcf-af11-40e4-aee5-eb2859957dfc.png">
+
 
 This is what our Review table looks like in Postico.
 

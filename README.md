@@ -63,7 +63,7 @@ TO copy our git repo, please follow the instructions below:
 localhost:8080...
 |HTTP Request Path             |Request Type|                  Description            |
 |:----------------------------:|:-----------|:----------------------------------------|
-|.../User                      |GET         | Display all users                       |
+|.../user                      |GET         | Display all users                       |
 |.../user/1                    |GET         | Find user by id                         |
 |.../user/username?name=Zsolt  |GET         | Find user by name                       |
 |.../user/1/reviews            |GET         |Get all reviews from the user by their id|

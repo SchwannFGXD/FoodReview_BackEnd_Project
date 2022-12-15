@@ -28,3 +28,8 @@ What your application does
 
 Why you used the technologies you used,
 Some of the challenges you faced and features you hope to implement in the future.
+
+|HTTP Request Path|Request Type|Description
+|:------------------|:-----------|:---------|
+|localhost:8080/User|    GET
+|localhost:8080/id  |    GET

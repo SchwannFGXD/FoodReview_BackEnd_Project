@@ -21,6 +21,7 @@ public class FoodPlaceController {
     @Autowired
     ReviewService reviewService;
 
+    //get all foodplaces
     @GetMapping
     public ResponseEntity<List<FoodPlace>> getAllFoodPlace(){
         List<FoodPlace> foodPlace = foodPlaceService.getAllFoodPlaces();
@@ -48,6 +49,7 @@ public class FoodPlaceController {
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
 
+    //get random foodplace
     @GetMapping("/random")
     public ResponseEntity<FoodPlace> getRandomFoodPlace(){
         Optional <FoodPlace> foodPlace = foodPlaceService.getRandomFoodPlace();
@@ -58,8 +60,9 @@ public class FoodPlaceController {
         }
     }
 
+    //get food place by id
     @GetMapping(value = "/{id}")
-    public ResponseEntity<FoodPlace> getAllFoodPlaceById(@PathVariable long id) {
+    public ResponseEntity<FoodPlace> getFoodPlaceById(@PathVariable long id) {
         Optional<FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
         if (foodPlace.isPresent()) {
             return new ResponseEntity<>(foodPlace.get(), HttpStatus.OK);
@@ -69,6 +72,7 @@ public class FoodPlaceController {
 
     }
 
+    //get reviews from a foodplace
     @GetMapping(value = "/{id}/reviews")
     public ResponseEntity<List<Review>> getAllReviewsFromFoodPlaceById(@PathVariable long id) {
         Optional<FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);
@@ -76,18 +80,21 @@ public class FoodPlaceController {
         return new ResponseEntity<>(reviews, HttpStatus.OK);
     }
 
+    //add food place
     @PostMapping
     public ResponseEntity<FoodPlace> newFoodPlace(@RequestBody FoodPlace foodPlace) {
         foodPlaceService.addFoodPlace(foodPlace);
         return new ResponseEntity<>(foodPlace, HttpStatus.CREATED);
     }
 
+    //delete food place
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> deleteFoodPlace(@PathVariable long id) {
         foodPlaceService.removeFoodPlaceById(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
+    //update food place
     @PutMapping(value = "/{id}")
     public ResponseEntity<FoodPlace> updateFoodPlace(@RequestBody FoodPlace foodPlace, @PathVariable Long id) {
         foodPlaceService.updateFoodPlace(foodPlace, id);
@@ -96,6 +103,7 @@ public class FoodPlaceController {
 
     }
 
+    //get average rating
     @GetMapping("/{id}/average_rating")
     public ResponseEntity<Double> getAvg(@PathVariable Long id) {
         Optional<FoodPlace> foodPlace = foodPlaceService.getFoodPlaceById(id);

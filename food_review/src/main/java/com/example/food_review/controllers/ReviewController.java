@@ -18,12 +18,14 @@ public class ReviewController {
     @Autowired
     ReviewService reviewService;
 
+    //gets all reviews
     @GetMapping
     public ResponseEntity<List<Review>> getAllReviews() {
         List<Review> reviews = reviewService.displayAllReviews();
         return new ResponseEntity<>(reviews, HttpStatus.OK);
     }
 
+    //gets review by its id
     @GetMapping(value = "/{id}")
     public ResponseEntity<Review> getReviewById(@PathVariable long id) {
         Optional<Review> review = reviewService.findReviewById(id);
@@ -35,21 +37,24 @@ public class ReviewController {
 
     }
 
+    //adds a review
     @PostMapping
     public ResponseEntity<Review> addNewReview(@RequestBody ReviewDTO reviewDTO) {
         Review review = reviewService.addReview(reviewDTO);
         return new ResponseEntity<>(review, HttpStatus.CREATED);
     }
 
+    //deletes a review
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> deleteReviewById(@PathVariable long id) {
         reviewService.deleteReviewById(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
+    //updates a review
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Review> updateReview(@RequestBody Review review, @PathVariable Long id) {
-        reviewService.updateReview(review, id);
+    public ResponseEntity<Review> updateReview(@RequestBody ReviewDTO reviewDTO, @PathVariable Long id) {
+        Review review = reviewService.updateReview(reviewDTO, id);
         return new ResponseEntity<>(review, HttpStatus.OK);
     }
 }

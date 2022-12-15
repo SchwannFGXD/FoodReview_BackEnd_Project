@@ -37,6 +37,9 @@ public class ReviewService {
         FoodPlace foodPlaceObject = foodPlaceRepository.findById(reviewDTO.getFoodPlaceId()).get();
         Review review= new Review(reviewDTO.getRating(), reviewDTO.getReviewText(), reviewDTO.getDate(), foodPlaceObject,userObject);
         reviewRepository.save(review);
+        //updates average rating
+        foodPlaceObject.update();
+        foodPlaceRepository.save(foodPlaceObject);
         return review;
     }
 
@@ -44,11 +47,21 @@ public class ReviewService {
         reviewRepository.deleteById(id);
     }
 
-    public void updateReview(Review review, Long id){
+    public Review updateReview(ReviewDTO reviewDTO, Long id){
+        User userObject = userRepository.findById(reviewDTO.getUserId()).get();
+        FoodPlace foodPlaceObject = foodPlaceRepository.findById(reviewDTO.getFoodPlaceId()).get();
+
         Review reviewToUpdate = reviewRepository.findById(id).get();
-        reviewToUpdate.setRating(review.getRating());
-        reviewToUpdate.setReviewText(review.getReviewText());
-        reviewToUpdate.setDate(review.getDate());
+
+        reviewToUpdate.setRating(reviewDTO.getRating());
+        reviewToUpdate.setReviewText(reviewDTO.getReviewText());
+        reviewToUpdate.setDate(reviewDTO.getDate());
+        reviewToUpdate.setFoodPlace(foodPlaceObject);
+        reviewToUpdate.setUser(userObject);
         reviewRepository.save(reviewToUpdate);
+        //updates average rating
+        foodPlaceObject.update();
+        foodPlaceRepository.save(foodPlaceObject);
+        return reviewToUpdate;
     }
 }

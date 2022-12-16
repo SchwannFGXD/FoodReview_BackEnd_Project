@@ -58,6 +58,7 @@ We used two one-to-many relationships, so one user to many reviews and one food 
 TO copy our git repo, please follow the instructions below:
 - Git clone SSH Key git clone git@github.com:e-b-m/team_1_food_review.git 
 - Create a database called food_review in the terminal (createdb food_review)
+- Also make sure to install postgres
 
 ## Routes ##
 localhost:8080...

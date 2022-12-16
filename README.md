@@ -110,6 +110,13 @@ Here is the code from the Review Controller.
         List<Review> reviews = reviewService.displayAllReviews();
         return new ResponseEntity<>(reviews, HttpStatus.OK);
     }`
+    
+    ## Further Extension ##
+- Making the food types a list in case a food place had more than one food type e.g. a buffet restaurant could have Mexican, Chinese and Thai food. 
+- Adding a list of food items to each food place. 
+- Google maps - making our API compatible with Google maps to help with the front-end. 
+- Applying contact information to the API so people can access details from the foodplace. 
+
 
 
 

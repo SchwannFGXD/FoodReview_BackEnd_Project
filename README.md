@@ -68,7 +68,7 @@ localhost:8080...
 |.../user/username?name=Zsolt  |GET         | Find user by name                       |
 |.../user/1/reviews            |GET         |Get all reviews from the user by their id|
 |.../user/1/foodplace          |GET         |Get food places from user                |
-|.../user                      |POST        |Get food places from user                |
+|.../user                      |POST        |Add a new user                           |
 |.../user/1                    |DELETE      |Delete user                              |
 |.../user/1                    |PUT         |Update user                              |
 |.../foodplace                 |GET         |Display all food places                  |

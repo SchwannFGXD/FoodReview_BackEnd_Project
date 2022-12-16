@@ -74,7 +74,7 @@ public class FoodPlace {
         return openingHour;
     }
 
-    public void setOpeningHour(LocalTime openingHours) {
+    public void setOpeningHour(LocalTime openingHour) {
         this.openingHour = openingHour;
     }
 

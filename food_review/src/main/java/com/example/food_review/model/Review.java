@@ -32,7 +32,8 @@ public class Review {
     @JsonIgnoreProperties({"reviews","foodPlace"})
     private FoodPlace foodPlace;
 
-    public Review(double rating, String reviewText, LocalDate date, FoodPlace foodPlace, User user){
+    public Review(double rating, String reviewText, LocalDate date,
+                  FoodPlace foodPlace, User user){
         this.rating = rating;
         this.reviewText = reviewText;
         this.date = date;
